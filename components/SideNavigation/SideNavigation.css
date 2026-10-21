@@ -1,0 +1,145 @@
+/* Side Navigation */
+
+div.SideNavigation {
+  background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  transition:
+    transform 0.6s ease,
+    width 0.6s ease;
+}
+
+div.SideNavigation.open {
+  width: 400px;
+}
+
+div.SideNavigation.collapsed {
+  width: 105px;
+}
+
+/* Sub Side Blocks */
+
+div.SideNavigationBlock {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+div.SideNavigationBlock.title {
+  flex: 0;
+}
+
+div.SideNavigationBlock.list {
+  flex: 1;
+}
+
+div.SideNavigationBlock.copyright {
+  flex: 0;
+}
+
+div.SideNavigationBlock.icons {
+  flex: 0;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+/* List Item */
+
+ul.SideNavigationList {
+  list-style-type: none;
+}
+
+ul.SideNavigationList li {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+}
+
+ul.SideNavigationList li a {
+  flex: 1;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* wrapper */
+.SideNavItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background-color 0.2s ease;
+}
+
+.SideNavItem:hover {
+  background-color: var(--bg);
+}
+
+/* icon */
+.SideNavItem .icon {
+  width: 24px;
+  height: 24px;
+
+}
+
+/* Label (default, opened, and collapsed */
+
+.SideNavItem .label {
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.SideNavItem.open .label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.SideNavItem.collapsed .label {
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+}
+
+span.label {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+.icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+@media (max-width: 600px) {
+
+  div.SideNavigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+
+    /* important for animation */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease, width 0.3s ease;
+  }
+
+  div.SideNavigation.open {
+    transform: translateX(0);
+    width: 260px;
+  }
+
+  div.SideNavigation.collapsed {
+    transform: translateX(-100%);
+    width: 260px; /* keep width stable for animation */
+  }
+
+  .SideNavigation.open {
+    transform: translateX(0);
+  }
+}

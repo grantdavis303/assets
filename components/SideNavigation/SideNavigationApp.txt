@@ -1,0 +1,35 @@
+import { useState } from "react";
+import SideNavigation from "./components/SideNavigation/SideNavigation"
+import "./App.css";
+
+function App() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleSideNavigation = () => {
+    setIsOpen(prev => !prev);
+  }
+
+  return (
+    <div id="AppContainer">
+      <SideNavigation
+        isOpen={isOpen}
+        toggleSideNavigation={toggleSideNavigation}
+      />
+
+      <div className="MainContent">
+        <div className="SubMainContent">
+          <div className="Title">
+            <h2> Microcontrollers </h2>
+          </div>
+
+          <div className="Content">
+            <p> Page Content </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default App
+
